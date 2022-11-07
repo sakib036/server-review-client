@@ -9,7 +9,7 @@ const Main = () => {
         <div style={{ background: `linear-gradient(rgba(97, 96, 93, 0.8), rgba(48, 48, 47, 0.8)), url(${backgroundImg})`, height: 'auto', width: '100%', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} >
             <div className='w-full h-full'>
                 <Header></Header>
-                <div className='max-w-screen-lg mx-auto border-2'>
+                <div className='max-w-screen-lg mx-auto'>
                     <Outlet></Outlet>
                 </div>
                 <Footer></Footer>
