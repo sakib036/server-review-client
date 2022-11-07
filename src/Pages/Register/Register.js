@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import register2 from '../../Assets/Login-reg/register2.png'
 import register from '../../Assets/Login-reg/register.png'
-// import { useContext } from 'react';
-// import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+
 
 
 const Register = () => {
-    // const {createUser}=useContext(AuthContext)
+    const {createUser}=useContext(AuthContext)
 
     const handelRegister = (event) => {
         event.preventDefault();
@@ -18,13 +19,13 @@ const Register = () => {
         const password=form.password.value;
         console.log(name,email,password, photoUrl);
 
-    //     createUser(email, password)
-    //     .then(result=>{
-    //         const user=result.user;
-    //         console.log(user);
-    //         form.reset();
-    //     })
-    //     .catch(error=>console.error(error))
+        createUser(email, password)
+        .then(result=>{
+            const user=result.user;
+            console.log(user);
+            form.reset();
+        })
+        .catch(error=>console.error(error))
 
      }
 

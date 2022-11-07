@@ -2,12 +2,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import imgUser from '../../Assets/Login-reg/user-blue.png';
 import imgLogin from '../../Assets/Login-reg/login.png';
-// import { useContext } from 'react';
-// import { AuthContext } from '../Context/AuthProvider/AuthProvider';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+
 
 
 const Login = () => {
-    // const {login}=useContext(AuthContext);
+    const {login}=useContext(AuthContext);
 
     const handelLogin = (event) => {
         event.preventDefault();
@@ -16,13 +17,13 @@ const Login = () => {
         const password=form.password.value;
         console.log(email,password);
 
-        // login(email,password)
-        // .then(result=>{
-        //     const user=result.user;
-        //     console.log(user)
-        //     form.reset();
-        // })
-        // .catch(error=>console.error(error))
+        login(email,password)
+        .then(result=>{
+            const user=result.user;
+            console.log(user)
+            form.reset();
+        })
+        .catch(error=>console.error(error))
 
     }
 

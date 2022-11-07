@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink ,Link } from 'react-router-dom';
 import imgLogo from '../../../Assets/Logo/logo-circle.png'
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const {user, logOut}=useContext(AuthContext);
+
+    const handelSignOut=()=>{
+        logOut()
+        .then(()=>{})
+        .catch(error=>console.error(error))
+    }
+    console.log(user)
     return (
         <div>
             <div className="navbar text-white p-10 max-w-screen-lg mx-auto">
@@ -29,8 +38,13 @@ const Header = () => {
                     
                 </div>
                 <div className="navbar-end">
-                <NavLink to='/login'>Login</NavLink>
-                </div>
+                {
+                    user?.uid?<button onClick={handelSignOut} className="btn btn-ghost">Log Out</button>
+                    :
+                    <NavLink to='/login'><button className="btn btn-ghost">LogIn</button></NavLink>
+                   
+                }
+                 </div>
             </div>
         </div>
     );
