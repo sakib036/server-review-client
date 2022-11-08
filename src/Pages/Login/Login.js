@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import imgUser from '../../Assets/Login-reg/user-blue.png';
 import imgLogin from '../../Assets/Login-reg/login.png';
 import { useContext } from 'react';
@@ -7,8 +7,17 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
 
+
 const Login = () => {
     const {login}=useContext(AuthContext);
+    const [error, setError] = useState('');
+
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+    console.log(from)
 
     const handelLogin = (event) => {
         event.preventDefault();
@@ -22,8 +31,13 @@ const Login = () => {
             const user=result.user;
             console.log(user)
             form.reset();
+            setError('');
+            navigate(from, { replace: true });
         })
-        .catch(error=>console.error(error))
+    .catch(error=>{
+        console.error(error)
+        setError(error.message);
+    })
 
     }
 
@@ -50,9 +64,7 @@ const Login = () => {
                                 <span className="label-text text-white font-bold text-xl">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered text-black" />
-                            <label className="label">
-                                <Link className="label-text-alt link link-hover text-white">Forgot password?</Link>
-                            </label>
+                           <p className='text-red-500'>{error}</p>
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>

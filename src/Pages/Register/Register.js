@@ -4,11 +4,13 @@ import register2 from '../../Assets/Login-reg/register2.png'
 import register from '../../Assets/Login-reg/register.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import { useNavigate } from "react-router-dom";
 
 
 
 const Register = () => {
-    const {createUser}=useContext(AuthContext)
+    const {createUser, updateUserProfile}=useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handelRegister = (event) => {
         event.preventDefault();
@@ -24,8 +26,25 @@ const Register = () => {
             const user=result.user;
             console.log(user);
             form.reset();
+            handleUpdateUserProfile(name, photoUrl);
+            if(user?.uid){
+                navigate('/')
+
+            }
         })
         .catch(error=>console.error(error))
+
+
+        const handleUpdateUserProfile = (name, photoUrl) => {
+            const profile = {
+                displayName: name,
+                photoURL: photoUrl,
+            }
+
+            updateUserProfile(profile)
+                .then(() => { })
+                .catch(error => console.error(error));
+        }
 
      }
 

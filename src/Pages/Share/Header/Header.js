@@ -39,7 +39,12 @@ const Header = () => {
                 </div>
                 <div className="navbar-end">
                 {
-                    user?.uid?<button onClick={handelSignOut} className="btn btn-ghost">Log Out</button>
+                    user?.uid?<>
+                    <NavLink to='/addservice'><button className="btn btn-ghost">ADD SERVICE</button></NavLink>
+                    <NavLink to='/myreview'><button className="btn btn-ghost">MY REVIEW</button></NavLink>
+                    <button onClick={handelSignOut} className="btn btn-ghost">Log Out</button>
+                    
+                    </>
                     :
                     <NavLink to='/login'><button className="btn btn-ghost">LogIn</button></NavLink>
                    
