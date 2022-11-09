@@ -4,6 +4,7 @@ import AddService from "../Pages/AddService/AddService";
 import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import EditComment from "../Pages/MyReview/EditComment";
 import MyReview from "../Pages/MyReview/MyReview";
 import Review from "../Pages/MyReview/Review";
 import Register from "../Pages/Register/Register";
@@ -46,14 +47,15 @@ export const routes=createBrowserRouter([
                 element:<ServiceDetails></ServiceDetails>,
                 loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`)
             },
-            // {
-            //     path:'/serviceDetails',
-            //     element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
-               
-            // },
+            
             {
                 path:'/blog',
                 element:<Blog></Blog>
+        
+            },
+            {
+                path:'/editComment',
+                element:<EditComment></EditComment>
         
             },
             {

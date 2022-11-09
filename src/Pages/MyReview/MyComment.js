@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 const MyComment = ({ oneComment, handelDeleteComment }) => {
+
+
+   
    
 
     const { servicePicture, serviceTitle, comment, photoURL, name, email } = oneComment;
@@ -13,7 +17,8 @@ const MyComment = ({ oneComment, handelDeleteComment }) => {
 
                 <div className="flex justify-between items-end">
                     <div>
-                        <button onClick={()=>handelDeleteComment(oneComment)} className="btn btn-accent">Delete Comment</button>
+                        <Link to='/editComment'><button  className="btn btn-accent">Edit Comment</button></Link>
+                        <button onClick={()=>handelDeleteComment(oneComment)} className="btn btn-warning mx-3">Delete Comment</button>
                     </div>
 
                     <div>
