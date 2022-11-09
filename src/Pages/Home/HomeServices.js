@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 const HomeServices = () => {
     const [services,setServices]=useState([]);
-    console.log(services)
+    
 
     useEffect(()=>{
         fetch('http://localhost:5000/home/services')

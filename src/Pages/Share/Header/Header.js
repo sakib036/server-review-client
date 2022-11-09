@@ -1,15 +1,21 @@
 import React, { useContext } from 'react';
-import { NavLink ,Link } from 'react-router-dom';
+import { NavLink ,Link, useNavigate } from 'react-router-dom';
 import imgLogo from '../../../Assets/Logo/logo-circle.png'
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
 const Header = () => {
     const {user, logOut}=useContext(AuthContext);
+    const navigate=useNavigate();
 
     const handelSignOut=()=>{
         logOut()
-        .then(()=>{})
+        .then(()=>{
+            navigate('/')
+
+        })
+        
         .catch(error=>console.error(error))
+        
     }
     console.log(user)
     return (
