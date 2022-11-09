@@ -54,8 +54,9 @@ export const routes=createBrowserRouter([
         
             },
             {
-                path:'/editComment',
-                element:<EditComment></EditComment>
+                path:'/comments/newComment/:id',
+                element:<EditComment></EditComment>,
+                loader:({params})=>fetch(`http://localhost:5000/comments/newComment/${params.id}`)
         
             },
             {

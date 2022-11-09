@@ -1,9 +1,33 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 const EditComment = () => {
 
-    const handelEditComment=()=>{
-        
+    const oldComment=useLoaderData();
+    
+
+    const handelEditComment=(e)=>{
+        e.preventDefault();
+        const form=e.target;
+        const comment=form.comment.value;
+        const newComment={comment};
+        console.log(newComment , oldComment._id)
+
+
+        fetch(`http://localhost:5000/comments/newComment/${oldComment._id}`,{
+            method:'PUT',
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(newComment)
+
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            form.reset()
+        })
+        .catch(error=>console.error(error))
     }
 
 

@@ -40,7 +40,7 @@ const MyReview = () => {
 
     return (
         <div>
-            {allComment.length<1?<>
+            {(allComment.length<1)?<>
            <div className='h-screen flex justify-center items-center'>
            <h1 className='text-white text-center text-3xl'>You Have No Comment To Show Please Add Comment First</h1>
            </div>
