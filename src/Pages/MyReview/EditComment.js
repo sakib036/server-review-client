@@ -1,9 +1,11 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+
 
 const EditComment = () => {
 
     const oldComment=useLoaderData();
+    const navigate = useNavigate();
     
 
     const handelEditComment=(e)=>{
@@ -26,6 +28,7 @@ const EditComment = () => {
         .then(data=>{
             console.log(data)
             form.reset()
+            navigate('/myreview')
         })
         .catch(error=>console.error(error))
     }

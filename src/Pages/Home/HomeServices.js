@@ -16,7 +16,7 @@ const HomeServices = () => {
         <div>
             {
                 services.map(service=><HomeService 
-                    key={service.index}
+                    key={service._id}
                     service={service}
                 
                 ></HomeService>)
