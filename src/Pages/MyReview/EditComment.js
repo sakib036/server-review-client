@@ -1,8 +1,11 @@
 import React from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
+import { toast } from 'react-toastify';
 
 
 const EditComment = () => {
+    useTitle('EditComment')
 
     const oldComment=useLoaderData();
     const navigate = useNavigate();
@@ -28,6 +31,7 @@ const EditComment = () => {
         .then(data=>{
             console.log(data)
             form.reset()
+           toast("Successfully Change The Comment !!!!!!")
             navigate('/myreview')
         })
         .catch(error=>console.error(error))

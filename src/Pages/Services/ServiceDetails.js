@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 import Review from '../MyReview/Review';
+import { toast } from 'react-toastify';
 
 const ServiceDetails = () => {
+    useTitle('ServiceDetails')
     const service = useLoaderData();
     const { title, picture, details, balance, _id } = service;
     const { user } = useContext(AuthContext);
@@ -52,6 +55,8 @@ const ServiceDetails = () => {
             .then(data => {
                 console.log(data)
                 form.reset();
+                toast("SuccessFully Create a Comment")
+
                  setChangeComment(true)
             })
             .catch(error => console.error(error))
@@ -88,7 +93,7 @@ const ServiceDetails = () => {
                     </>
                         :
                         <><div className="card-actions justify-center">
-                            <Link> <button className="btn btn-primary">Add a Comment Please Login First </button></Link>
+                            <Link to='/login'> <button className="btn btn-primary">Add a Comment Please Login First </button></Link>
                         </div></>
                 }
             </div>

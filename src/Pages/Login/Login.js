@@ -4,13 +4,18 @@ import imgUser from '../../Assets/Login-reg/user-blue.png';
 import imgLogin from '../../Assets/Login-reg/login.png';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
+import { FaGoogle } from 'react-icons/fa';
+import { toast } from 'react-toastify';
+
 
 
 
 
 const Login = () => {
-    const {login}=useContext(AuthContext);
+    const {login, providerGoogleLogIn}=useContext(AuthContext);
     const [error, setError] = useState('');
+    useTitle('Login');
 
 
     const navigate = useNavigate();
@@ -18,6 +23,23 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
     console.log(from)
+
+
+    const handleGoogleLogIn = () => {
+        providerGoogleLogIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                console.error(error)
+                setError(error.message);
+            })
+            
+
+    }
 
     const handelLogin = (event) => {
         event.preventDefault();
@@ -49,6 +71,7 @@ const Login = () => {
             })
             
             form.reset();
+            toast("Successfully Log In!")
             setError('');
             navigate(from, { replace: true });
         })
@@ -86,11 +109,15 @@ const Login = () => {
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
-                        </div>
-                        <div className='my-3 italic'>
+                           
+                        </div> 
+                    </form>
+                    <div className='px-10 '>
+                    <button onClick={handleGoogleLogIn} className="btn btn-active btn-secondary w-full"><FaGoogle /></button>
+                    </div>
+                    <div className='my-3 italic p-10'>
                             <h1>Have't account please <Link to='/register' className='border-2 border-amber-500 py-2 px-3 bg-orange-500 rounded-2xl btn btn-active not-italic'>REGISTER</Link> Now</h1>
                         </div>
-                    </form>
                 </div>
             </div>
             

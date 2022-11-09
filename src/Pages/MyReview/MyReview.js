@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 import MyComment from './MyComment';
+import { toast } from 'react-toastify';
 
 const MyReview = () => {
     const { user, logOut } = useContext(AuthContext);
 
     const [allComment, setAllComment] = useState([]);
+    useTitle('MyReview');
 
 
 
@@ -39,6 +42,7 @@ const MyReview = () => {
                     if (data.deletedCount > 0) {
                         const remainingComment = allComment.filter(comment => comment._id !== oneComment._id);
                         setAllComment(remainingComment);
+                        toast("Successfully Delete Comment!")
 
                     }
                 })

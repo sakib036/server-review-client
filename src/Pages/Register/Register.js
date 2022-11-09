@@ -5,12 +5,15 @@ import register from '../../Assets/Login-reg/register.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { useNavigate } from "react-router-dom";
+import useTitle from '../../Hooks/useTitle';
+import { toast } from 'react-toastify';
 
 
 
 const Register = () => {
     const {createUser, updateUserProfile}=useContext(AuthContext);
     const navigate = useNavigate();
+    useTitle('Register')
 
     const handelRegister = (event) => {
         event.preventDefault();
@@ -26,6 +29,7 @@ const Register = () => {
             const user=result.user;
             console.log(user);
             form.reset();
+            toast("Successfully Register!")
             handleUpdateUserProfile(name, photoUrl);
             if(user?.uid){
                 navigate('/')
