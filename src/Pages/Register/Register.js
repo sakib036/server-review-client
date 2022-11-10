@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import register2 from '../../Assets/Login-reg/register2.png'
 import register from '../../Assets/Login-reg/register.png'
@@ -13,6 +13,7 @@ import { toast } from 'react-toastify';
 const Register = () => {
     const {createUser, updateUserProfile}=useContext(AuthContext);
     const navigate = useNavigate();
+    const [error, setError] = useState('');
     useTitle('Register')
 
     const handelRegister = (event) => {
@@ -36,7 +37,10 @@ const Register = () => {
 
             }
         })
-        .catch(error=>console.error(error))
+        .catch(error => {
+            console.error(error)
+            setError(error.message);
+        })
 
 
         const handleUpdateUserProfile = (name, photoUrl) => {
@@ -47,7 +51,10 @@ const Register = () => {
 
             updateUserProfile(profile)
                 .then(() => { })
-                .catch(error => console.error(error));
+                .catch(error => {
+                    console.error(error)
+                    setError(error.message);
+                })
         }
 
      }
@@ -68,7 +75,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text text-white font-bold text-xl">Full Name</span>
                             </label>
-                            <input type="text" name='name' placeholder="full name" className="input input-bordered text-black" />
+                            <input type="text" name='name' placeholder="full name" className="input input-bordered text-black" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -80,13 +87,14 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text text-white font-bold text-xl">Email</span>
                             </label>
-                            <input type="text" name='email' placeholder="email" className="input input-bordered text-black" />
+                            <input type="text" name='email' placeholder="email" className="input input-bordered text-black" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-white font-bold text-xl">Password</span>
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered text-black" />
+                            <p className='text-red-500'>{error}</p>
 
                         </div>
                         <div className="form-control mt-6">
