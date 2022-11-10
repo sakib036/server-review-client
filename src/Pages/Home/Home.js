@@ -2,6 +2,7 @@ import React from 'react';
 import useTitle from '../../Hooks/useTitle';
 import HomeServices from './HomeServices';
 import Slider from './Slider';
+import WhyService from './WhyService';
 
 
 const Home = () => {
@@ -15,6 +16,7 @@ const Home = () => {
         <div>
             <Slider></Slider>
             <HomeServices></HomeServices>
+            <WhyService></WhyService>
         </div>
         
     );
