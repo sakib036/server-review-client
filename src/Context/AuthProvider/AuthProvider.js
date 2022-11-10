@@ -1,37 +1,37 @@
 import React from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { createContext } from 'react';
 import app from '../../Firebase/Firebase.config';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
 
-export const AuthContext=createContext();
-const auth=getAuth(app);
+export const AuthContext = createContext();
+const auth = getAuth(app);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
 
 
-    const [user, setUser]=useState(null)
-    const [loading,setLoading]=useState(true);
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true);
 
-    
-   
 
-    const googleProvider=new GoogleAuthProvider();
+
+
+    const googleProvider = new GoogleAuthProvider();
 
 
     const providerGoogleLogIn = () => {
-      
+
         setLoading(true);
         return signInWithPopup(auth, googleProvider)
     }
 
 
-    const createUser=(email,password)=>{
+    const createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth,email,password)
-        
+        return createUserWithEmailAndPassword(auth, email, password)
+
     }
 
     const updateUserProfile = (profile) => {
@@ -39,31 +39,29 @@ const AuthProvider = ({children}) => {
         return updateProfile(auth.currentUser, profile);
     }
 
-    const login=(email,password)=>{
+    const login = (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const logOut=()=>{
+    const logOut = () => {
         setLoading(true);
         localStorage.removeItem('jwt-token')
-        
         return signOut(auth);
     }
 
-    useEffect( ()=>{
-        const unsubscribe=onAuthStateChanged(auth,currentUser=>{
-            // console.log(currentUser);
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false);
         });
-        return () =>{
+        return () => {
             return unsubscribe();
         }
-    },[])
+    }, [])
 
 
-    const authInfo={
+    const authInfo = {
         user,
         loading,
         createUser,
@@ -71,13 +69,13 @@ const AuthProvider = ({children}) => {
         logOut,
         updateUserProfile,
         providerGoogleLogIn,
-       
+
 
     }
 
 
     return (
-        <AuthContext.Provider  value={authInfo}>
+        <AuthContext.Provider value={authInfo}>
             {children}
         </AuthContext.Provider>
     );

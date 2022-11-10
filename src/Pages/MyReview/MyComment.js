@@ -17,7 +17,7 @@ const MyComment = ({ oneComment, handelDeleteComment }) => {
 
                 <div className="flex justify-between items-end">
                     <div>
-                        <Link to={`/comments/newComment/${_id}`}><button  className="btn btn-accent">Edit Comment</button></Link>
+                        <Link to={`/comments/newComment/${_id}`}><button  className="btn btn-accent my-3">Edit Comment</button></Link>
                         <button onClick={()=>handelDeleteComment(oneComment)} className="btn btn-warning mx-3">Delete Comment</button>
                     </div>
 

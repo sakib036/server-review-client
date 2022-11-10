@@ -4,17 +4,21 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
 
+
 const Service = ({ service }) => {
     const { _id, title, balance, picture, details, } = service;
+
+   
     return (
 
         <div className="card card-compact w-full backdrop-contrast-50 shadow-2xl text-white">
+            
 
             <PhotoProvider
                 speed={() => 800}
                 easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}>
                 <PhotoView src={picture}>
-                    <img src={picture} alt="" />
+                    <img className='w-full h-96' src={picture} alt="" />
                 </PhotoView>
             </PhotoProvider>
 

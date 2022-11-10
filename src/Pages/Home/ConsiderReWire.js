@@ -8,8 +8,8 @@ const ConsiderReWire = () => {
                 <img className='w-full rounded-2xl' src={wireImg} alt="" />
             </div>
             
-            <div className='ml-10 w-full'>
-            <h1 className='text-3xl font-bold'>YOU SHOULD CONSIDER REWIRING YOUR HOME</h1>
+            <div className='ml-10 w-full p-4'>
+            <h1 className='text-3xl font-bold p-3'>YOU SHOULD CONSIDER REWIRING YOUR HOME</h1>
             <ul className='text-xl mt-3 ml-10 list-disc'>
                 <li>ROUTINE FLICKERING OF LIGHTS</li>
                 <li>OVERACTIVE BREAKERS</li>
