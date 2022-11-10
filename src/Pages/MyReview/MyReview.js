@@ -15,7 +15,7 @@ const MyReview = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/comments?email=${user?.email}`,{
+        fetch(`https://perfect-engineering-server.vercel.app/comments?email=${user?.email}`,{
             headers:{
                 authorization:`Bearer ${localStorage.getItem('jwt-token')}`
             }
@@ -35,12 +35,12 @@ const MyReview = () => {
         const agree = window.confirm(`Are You Sure You Wont to Delete ${oneComment.title}`);
 
         if (agree) {
-            fetch(`http://localhost:5000/comments/${oneComment._id}`, {
+            fetch(`https://perfect-engineering-server.vercel.app/comments/${oneComment._id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    
                     if (data.deletedCount > 0) {
                         const remainingComment = allComment.filter(comment => comment._id !== oneComment._id);
                         setAllComment(remainingComment);

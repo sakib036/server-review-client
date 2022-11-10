@@ -19,7 +19,7 @@ const EditComment = () => {
        
 
 
-        fetch(`http://localhost:5000/comments/newComment/${oldComment._id}`,{
+        fetch(`https://perfect-engineering-server.vercel.app/comments/newComment/${oldComment._id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'
@@ -29,7 +29,7 @@ const EditComment = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data)
+            
             form.reset()
            toast("Successfully Change The Comment !!!!!!")
             navigate('/myreview')

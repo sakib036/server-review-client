@@ -19,7 +19,7 @@ const AddService = () => {
         const service={title,picture,balance,details}
 
 
-        fetch('http://localhost:5000/services',{
+        fetch('https://perfect-engineering-server.vercel.app/services',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

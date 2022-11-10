@@ -17,7 +17,7 @@ const ServiceDetails = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/comments/${service._id}`)
+        fetch(`https://perfect-engineering-server.vercel.app/comments/${service._id}`)
             .then(res => res.json())
             .then(data => setComment(data))
     }, [service,changeComment])
@@ -43,8 +43,8 @@ const ServiceDetails = () => {
             serviceTitle: title,
             comment
         }
-        console.log(comments);
-        fetch('http://localhost:5000/comments', {
+       
+        fetch('https://perfect-engineering-server.vercel.app/comments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -53,7 +53,7 @@ const ServiceDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+               
                 form.reset();
                 toast("SuccessFully Create a Comment")
 

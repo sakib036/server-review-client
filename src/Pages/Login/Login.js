@@ -34,7 +34,7 @@ const Login = () => {
                     email:user.email
                 }
                 console.log(user);
-                fetch('http://localhost:5000/jwt',{
+                fetch('https://perfect-engineering-server.vercel.app/jwt',{
                     method:'POST',
                     headers:{
                         'content-type':'application/json'
@@ -73,7 +73,7 @@ const Login = () => {
             }
             
 
-            fetch('http://localhost:5000/jwt',{
+            fetch('https://perfect-engineering-server.vercel.app/jwt',{
                 method:'POST',
                 headers:{
                     'content-type':'application/json'
@@ -82,7 +82,7 @@ const Login = () => {
             })
             .then(res=>res.json())
             .then(data=>{
-                console.log(data)
+               
                 localStorage.setItem('jwt-token', data.token);
             })
             

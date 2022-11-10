@@ -41,23 +41,23 @@ export const routes=createBrowserRouter([
             {
                 path:'/services',
                 element:<Services></Services>,
-                loader:()=>fetch('http://localhost:5000/services')
+                loader:()=>fetch('https://perfect-engineering-server.vercel.app/services')
             },
             {
                 path:'/service/:id',
                 element:<ServiceDetails></ServiceDetails>,
-                loader:({params})=>fetch(`http://localhost:5000/service/${params.id}`)
+                loader:({params})=>fetch(`https://perfect-engineering-server.vercel.app/service/${params.id}`)
             },
             
             {
                 path:'/blog',
-                element:<PrivateRoute><Blog></Blog></PrivateRoute>
+                element:<Blog></Blog>
         
             },
             {
                 path:'/comments/newComment/:id',
                 element:<EditComment></EditComment>,
-                loader:({params})=>fetch(`http://localhost:5000/comments/newComment/${params.id}`)
+                loader:({params})=>fetch(`https://perfect-engineering-server.vercel.app/comments/newComment/${params.id}`)
         
             },
             {
