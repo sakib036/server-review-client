@@ -84,7 +84,7 @@ const ServiceDetails = () => {
                     user?.uid ? <>
                         <div onBlur={handelBlur} className=" text-white shadow-2xl shadow-red-500/50 my-6 rounded-2xl border-2 border-red-300 h-60">
                             <form onSubmit={handelComment} className='h-3/4'>
-                                <textarea className="textarea textarea-secondary w-full h-full text-2xl bg-gray-500 backdrop-contrast-50" name='comment' placeholder="Bio"></textarea>
+                                <textarea className="textarea textarea-secondary w-full h-full text-2xl bg-gray-500 backdrop-contrast-50" name='comment' placeholder="Bio" required></textarea>
                                 <div className="card-actions justify-center">
                                     <button className="btn btn-primary">Submit Your Comment</button>
                                 </div>

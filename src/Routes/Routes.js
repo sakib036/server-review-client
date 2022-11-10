@@ -31,7 +31,7 @@ export const routes=createBrowserRouter([
             },
             {
                 path:'/myreview',
-                element:<MyReview></MyReview>
+                element:<PrivateRoute><MyReview></MyReview></PrivateRoute>,
             },
           
             {
@@ -51,7 +51,7 @@ export const routes=createBrowserRouter([
             
             {
                 path:'/blog',
-                element:<Blog></Blog>
+                element:<PrivateRoute><Blog></Blog></PrivateRoute>
         
             },
             {

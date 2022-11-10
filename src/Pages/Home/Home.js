@@ -1,5 +1,6 @@
 import React from 'react';
 import useTitle from '../../Hooks/useTitle';
+import ConsiderReWire from './ConsiderReWire';
 import HomeServices from './HomeServices';
 import Slider from './Slider';
 import WhyService from './WhyService';
@@ -17,6 +18,7 @@ const Home = () => {
             <Slider></Slider>
             <HomeServices></HomeServices>
             <WhyService></WhyService>
+            <ConsiderReWire></ConsiderReWire>
         </div>
         
     );

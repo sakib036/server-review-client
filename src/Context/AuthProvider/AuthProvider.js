@@ -15,6 +15,9 @@ const AuthProvider = ({children}) => {
     const [user, setUser]=useState(null)
     const [loading,setLoading]=useState(true);
 
+    
+   
+
     const googleProvider=new GoogleAuthProvider();
 
 
@@ -42,8 +45,9 @@ const AuthProvider = ({children}) => {
     }
 
     const logOut=()=>{
-        localStorage.removeItem('jwt-token')
         setLoading(true);
+        localStorage.removeItem('jwt-token')
+        
         return signOut(auth);
     }
 
@@ -67,6 +71,7 @@ const AuthProvider = ({children}) => {
         logOut,
         updateUserProfile,
         providerGoogleLogIn,
+       
 
     }
 

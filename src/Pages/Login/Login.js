@@ -22,14 +22,30 @@ const Login = () => {
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
-    console.log(from)
+   
 
 
     const handleGoogleLogIn = () => {
         providerGoogleLogIn()
             .then(result => {
                 const user = result.user;
+
+                const currentUser={
+                    email:user.email
+                }
                 console.log(user);
+                fetch('http://localhost:5000/jwt',{
+                    method:'POST',
+                    headers:{
+                        'content-type':'application/json'
+                    },
+                    body:JSON.stringify(currentUser)
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    console.log(data)
+                    localStorage.setItem('jwt-token', data.token);
+                })
                 setError('');
                 navigate(from, { replace: true });
             })
@@ -46,7 +62,7 @@ const Login = () => {
         const form=event.target;
         const email=form.email.value;
         const password=form.password.value;
-        console.log(email,password);
+       
 
         login(email,password)
         .then(result=>{
@@ -55,7 +71,7 @@ const Login = () => {
             const currentUser={
                 email:user.email
             }
-            console.log(user)
+            
 
             fetch('http://localhost:5000/jwt',{
                 method:'POST',

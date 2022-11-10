@@ -1,5 +1,6 @@
 import React from 'react';
 import useTitle from '../../Hooks/useTitle';
+import { toast } from 'react-toastify';
 
 
 const AddService = () => {
@@ -29,6 +30,7 @@ const AddService = () => {
         .then(data=>{
             console.log(data)
             form.reset();
+            toast("Successfully Added to the Service!")
         })
         .catch(error=>console.error(error))
 
@@ -48,7 +50,7 @@ const AddService = () => {
                             <label className="label">
                                 <span className="label-text text-white font-bold text-xl">Title Of the Service</span>
                             </label>
-                            <input type="text" name='title' placeholder="Title Of the Service" className="input input-bordered text-black" />
+                            <input type="text" name='title' placeholder="Title Of the Service" className="input input-bordered text-black" required/>
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -60,7 +62,7 @@ const AddService = () => {
                             <label className="label">
                                 <span className="label-text text-white font-bold text-xl">Price</span>
                             </label>
-                            <input type="text" name='balance' placeholder="price" className="input input-bordered text-black" />
+                            <input type="text" name='balance' placeholder="price" className="input input-bordered text-black" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
